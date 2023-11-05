@@ -249,7 +249,7 @@ print('Again, temperature to Kelvin was:', temp_k)
 
     NameError                                 Traceback (most recent call last)
 
-    <ipython-input-10-7727a271ab51> in <module>
+    <ipython-input-26-7727a271ab51> in <module>
     ----> 1 print('Again, temperature to Kelvin was:', temp_k)
     
 
@@ -262,10 +262,20 @@ temp_kelvin = fahr_to_kelvin(212.0)
 print('Temperature in Kelvin was:', temp_kelvin)
 ```
 
+    Temperature in Kelvin was: 373.15
+
+
 
 ```python
 temp_kelvin
 ```
+
+
+
+
+    373.15
+
+
 
 
 ```python
@@ -278,6 +288,10 @@ temp_kelvin = fahr_to_kelvin(temp_fahr)
 
 print_temperatures()
 ```
+
+    Temperature in Fahrenheit was: 212.0
+    Temperature in Kelvin was: 373.15
+
 
 
 ```python
