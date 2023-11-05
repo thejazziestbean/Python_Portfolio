@@ -1,6 +1,220 @@
 # Jazmin_Abreu_Python_Portfolio
 This is the portfolio of the python code from the first pyhton BISC 450C course with Dr. Vandenbrink
 
+## Transcription
+```python
+# Prompt the user to enter the input fasta file name
+
+input_file_name = input("Enter the name of the input fasta file: ")
+```
+
+    Enter the name of the input fasta file:  SUMO.txt
+
+
+
+```python
+# Open the input fasta file and read the DNA sequence
+
+with open(input_file_name, "r") as input_file:
+    dna_sequence = ""
+    for line in input_file:
+        if line.startswith(">"):
+            continue
+        dna_sequence += line.strip()
+```
+
+
+```python
+# Transcribe the DNA to RNA
+rna_sequence = ""
+for nucleotide in dna_sequence:
+    if nucleotide == "T":
+        rna_sequence += "U"
+    else:
+        rna_sequence += nucleotide
+```
+
+
+```python
+# Prompt the user to enter the output file name
+
+output_file_name = input("Enter the name of the output file: ")
+```
+
+    Enter the name of the output file:  SUMO_RNA.txt
+
+
+
+```python
+# Save the RNA sequence to a text file
+
+with open(output_file_name, "w") as output_file:
+    output_file.write(rna_sequence)
+    print("The RNA sequence has been saved to (output_file_name)")
+```
+
+    The RNA sequence has been saved to (output_file_name)
+
+
+
+```python
+print(rna_sequence)
+```
+
+    AUGUCUGACGAAAAGAAGGGAGGUGAGACCGAGCACAUCAACCUGAAGGUCCUCGGCCAGGACAACGCCGUCGUCCAGUUCAAGAUCAAGAAGCACACACCCUUGAGGAAGCUGAUGAACGCCUACUGCGACCGUGCCGGACUCUCCAUGCAGGUGGUGCGCUUCCGUUUCGACGGACAGCCCAUCAACGAGAACGACACUCCGACCUCGCUGGAGAUGGAGGAGGGCGACACCAUCGAGGUUUACCAGCAGCAGACUGGUGGCGCUCCAUAAAUGUCUGACGAAAAGAAGGGAGGUGAGACCGAGCACAUCAACCUGAAGGUCCUCGGCCAGGACAACGCCGUCGUCCAGUUCAAGAUCAAGAAGCACACACCCUUGAGGAAGCUGAUGAACGCCUACUGCGACCGUGCCGGACUCUCCAUGCAGGUGGUGCGCUUCCGUUUCGACGGACAGCCCAUCAACGAGAACGACACUCCGACCUCGCUGGAGAUGGAGGAGGGCGACACCAUCGAGGUUUACCAGCAGCAGACUGGUGGCGCUCCAUAA
+
+
+
+```python
+
+```
+
+
+
+
+
+## Python Fundamentals
+```python
+# Any python interpreter can be used as a calculator:
+3 + 5 * 4
+```
+
+
+
+
+    23
+
+
+
+
+```python
+# Lets save a value to a variable
+weight_kg = 60
+```
+
+
+```python
+print(weight_kg)
+```
+
+    60
+
+
+
+```python
+# Weight0 = valid
+# 0weight = invalid
+# weight and Weight are different
+```
+
+
+```python
+# Types of data
+# There are three common types of data
+# Integer numbers
+# floating point numbers
+# Strings
+```
+
+
+```python
+# Floating point number
+weight_kg = 60.3
+```
+
+
+```python
+# String comprised of letters
+patient_name = "Jon Smith"
+```
+
+
+```python
+# String comprised of numbers
+patient_id = '001'
+```
+
+
+```python
+# Use variables in python
+
+weight_lb = 2.2 * weight_kg
+
+print(weight_lb)
+```
+
+    132.66
+
+
+
+```python
+# Lets add a prefix to our patient id
+
+patient_id = 'inflam_' + patient_id
+
+print(patient_id)
+```
+
+    inflam_001
+
+
+
+```python
+# Lets combine print statements
+
+print(patient_id, 'weight in kilograms:', weight_kg)
+```
+
+    inflam_001 weight in kilograms: 60.3
+
+
+
+```python
+# we can call a function inside another function
+
+print(type(60.3))
+
+print(type(patient_id))
+```
+
+    <class 'float'>
+    <class 'str'>
+
+
+
+```python
+# We can also do calculations inwside the print function
+
+print('weight in lbs:', 2.2 * weight_kg)
+```
+
+    weight in lbs: 132.66
+
+
+
+```python
+print(weight_kg)
+```
+
+    60.3
+
+
+
+```python
+weight_kg = 65.0
+print('weight in kilograms is now:', weight_kg)
+```
+
+    weight in kilograms is now: 65.0
+
+
+
+```python
+
+```
+
+
+
 ## Storing Values in Lists
 ```python
 odds = [1, 3, 5, 7]
