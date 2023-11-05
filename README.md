@@ -1,6 +1,421 @@
 # Jazmin_Abreu_Python_Portfolio
 This is the portfolio of the python code from the first pyhton BISC 450C course with Dr. Vandenbrink
 
+## Creating Functions
+```python
+import numpy
+import matplotlib
+import matplotlib.pyplot
+import glob
+```
+
+
+```python
+def visualize(filename):
+    
+    data = numpy.loadtxt(fname = filename, delimiter = ',')
+    
+    fig = matplotlib.pyplot.figure(figsize=(10.0, 3.0))
+    
+    axes1 = fig.add_subplot(1, 3, 1)
+    axes2 = fig.add_subplot(1, 3, 2)
+    axes3 = fig.add_subplot(1, 3, 3)
+    
+    axes1.set_ylabel('average')
+    axes1.plot(numpy.mean(data, axis=0))
+    
+    axes2.set_ylabel('max')
+    axes2.plot(numpy.amax(data, axis=0))
+    
+    axes3.set_ylabel('min')
+    axes3.plot(numpy.amin(data, axis=0))
+    
+    fig.tight_layout()
+    matplotlib.pyplot.show()
+```
+
+
+```python
+def detect_problems(filename):
+    
+    data =  numpy.loadtxt(fname = filename, delimiter = ',')
+    
+    if numpy.amax(data, axis = 0)[0] == 0 and numpy.amax(data, axis=0)[20] == 20:
+        print("Suspicious looking maxima!")
+    elif numpy.sum(numpy.amin(data, axis=0)) == 0:
+        print('Minima add up to zero!')
+    else:
+        print('Seems ok!')
+```
+
+
+```python
+filenames = sorted(glob.glob('inflammation*.csv'))
+
+for filename in filenames:
+    print(filename)
+    visualize(filename)
+    detect_problems(filename)
+```
+
+    inflammation-01.csv
+
+
+
+![png](output_3_1.png)
+
+
+    Suspicious looking maxima!
+    inflammation-02.csv
+
+
+
+![png](output_3_3.png)
+
+
+    Suspicious looking maxima!
+    inflammation-03.csv
+
+
+
+![png](output_3_5.png)
+
+
+    Minima add up to zero!
+    inflammation-04.csv
+
+
+
+![png](output_3_7.png)
+
+
+    Suspicious looking maxima!
+    inflammation-05.csv
+
+
+
+![png](output_3_9.png)
+
+
+    Suspicious looking maxima!
+    inflammation-06.csv
+
+
+
+![png](output_3_11.png)
+
+
+    Suspicious looking maxima!
+    inflammation-07.csv
+
+
+
+![png](output_3_13.png)
+
+
+    Suspicious looking maxima!
+    inflammation-08.csv
+
+
+
+![png](output_3_15.png)
+
+
+    Minima add up to zero!
+    inflammation-09.csv
+
+
+
+![png](output_3_17.png)
+
+
+    Suspicious looking maxima!
+    inflammation-10.csv
+
+
+
+![png](output_3_19.png)
+
+
+    Suspicious looking maxima!
+    inflammation-11.csv
+
+
+
+![png](output_3_21.png)
+
+
+    Minima add up to zero!
+    inflammation-12.csv
+
+
+
+![png](output_3_23.png)
+
+
+    Suspicious looking maxima!
+
+
+
+```python
+def offset_mean(data, target_mean_value):
+    return(data - numpy.mean(data)) + target_mean_value
+```
+
+
+```python
+z = numpy.zeros((2,2))
+print(offset_mean(z,3))
+```
+
+    [[3. 3.]
+     [3. 3.]]
+
+
+
+```python
+data = numpy.loadtxt(fname = 'inflammation-01.csv', delimiter = ',')
+
+print(offset_mean(data, 0))
+```
+
+    [[-6.14875 -6.14875 -5.14875 ... -3.14875 -6.14875 -6.14875]
+     [-6.14875 -5.14875 -4.14875 ... -5.14875 -6.14875 -5.14875]
+     [-6.14875 -5.14875 -5.14875 ... -4.14875 -5.14875 -5.14875]
+     ...
+     [-6.14875 -5.14875 -5.14875 ... -5.14875 -5.14875 -5.14875]
+     [-6.14875 -6.14875 -6.14875 ... -6.14875 -4.14875 -6.14875]
+     [-6.14875 -6.14875 -5.14875 ... -5.14875 -5.14875 -6.14875]]
+
+
+
+```python
+print('original min, mean and max are:', numpy.amin(data), numpy.mean(data), numpy.amax(data))
+offset_data = offset_mean(data, 0)
+print('min, mean, and max of offset data are:',
+      numpy.amin(offset_data),
+      numpy.mean(offset_data),
+      numpy.amax(offset_data))
+```
+
+    original min, mean and max are: 0.0 6.14875 20.0
+    min, mean, and max of offset data are: -6.14875 2.842170943040401e-16 13.85125
+
+
+
+```python
+print('std dev before and after:', numpy.std(data), numpy.std(offset_data))
+```
+
+    std dev before and after: 4.613833197118566 4.613833197118566
+
+
+
+```python
+print('difference in standard deviation before and after:',
+     numpy.std(data) - numpy.std(offset_data))
+```
+
+    difference in standard deviation before and after: 0.0
+
+
+
+```python
+# offset_mean(data, target_mean_value):
+# return a new array containing the orginal data with its mean offset to match the desired value.
+# This data should be imputed as measurements in columns and samples in rows
+
+def offset_mean(data, target_mean_value):
+    return(data - numpy.mean(data)) + target_mean_value
+```
+
+
+```python
+def offset_mean(data, target_mean_value):
+    """Return a new array containing the original data with its mean offset to match the desired value"""
+    return(data - numpy.mean(data)) + target_mean_value
+```
+
+
+```python
+help(offset_mean)
+```
+
+    Help on function offset_mean in module __main__:
+    
+    offset_mean(data, target_mean_value)
+        Return a new array containing the original data with its mean offset to match the desired value
+    
+
+
+
+```python
+def offset_mean(data, target_mean_value):
+    """Return a new array containing the original data with its mean offset to match the desired value.
+    
+    Examples
+    ----------
+    
+    >>> Offset_mean([1,2,3], 0)
+    array([-1, 0., 1.])
+    """
+    return (data - numpy.mean(data)) + target_mean_value
+```
+
+
+```python
+help(offset_mean)
+```
+
+    Help on function offset_mean in module __main__:
+    
+    offset_mean(data, target_mean_value)
+        Return a new array containing the original data with its mean offset to match the desired value.
+        
+        Examples
+        ----------
+        
+        >>> Offset_mean([1,2,3], 0)
+        array([-1, 0., 1.])
+    
+
+
+
+```python
+numpy.loadtxt('inflammation-01.csv', delimiter = ',')
+```
+
+
+
+
+    array([[0., 0., 1., ..., 3., 0., 0.],
+           [0., 1., 2., ..., 1., 0., 1.],
+           [0., 1., 1., ..., 2., 1., 1.],
+           ...,
+           [0., 1., 1., ..., 1., 1., 1.],
+           [0., 0., 0., ..., 0., 2., 0.],
+           [0., 0., 1., ..., 1., 1., 0.]])
+
+
+
+
+```python
+numpy.loadtxt('inflammation-01.csv', ',')
+```
+
+
+    Traceback (most recent call last):
+
+
+      File "/home/student/anaconda3/lib/python3.7/site-packages/IPython/core/interactiveshell.py", line 3326, in run_code
+        exec(code_obj, self.user_global_ns, self.user_ns)
+
+
+      File "<ipython-input-51-d0d3ef43afeb>", line 1, in <module>
+        numpy.loadtxt('inflammation-01.csv', ',')
+
+
+      File "/home/student/anaconda3/lib/python3.7/site-packages/numpy/lib/npyio.py", line 1087, in loadtxt
+        dtype = np.dtype(dtype)
+
+
+      File "/home/student/anaconda3/lib/python3.7/site-packages/numpy/core/_internal.py", line 201, in _commastring
+        newitem = (dtype, eval(repeats))
+
+
+      File "<string>", line 1
+        ,
+        ^
+    SyntaxError: unexpected EOF while parsing
+
+
+
+
+```python
+def offset_mean(data, target_mean_value = 0.0):
+    """Return a new array containing the original data with its mean offset to match the desired value, (0 by default).
+    
+    Examples
+    ----------
+    
+    >>> Offset_mean([1,2,3])
+    array([-1, 0., 1.])
+    """
+    return (data - numpy.mean(data)) + target_mean_value
+```
+
+
+```python
+test_data = numpy.zeros((2,2))
+print(offset_mean(test_data,3))
+```
+
+
+```python
+print(offset_mean(test_data))
+```
+
+
+```python
+def display(a=1, b=2, c=3):
+    print('a:', a, 'b:', b, 'c', c)
+
+print('no parameters')
+display()
+print('one parameter:')
+display(55)
+print('two parameters:')
+display(55,66)
+```
+
+
+```python
+print('only setting the value of c')
+display(c = 77)
+```
+
+
+```python
+help(numpy.loadtxt)
+```
+
+
+```python
+numpy.loadtxt('inflammation-01.csv', delimiter = ',')
+```
+
+
+```python
+def s(p):
+    a = 0
+    for v in p:
+        a += v
+    m = a / len(p)
+    d = 0
+    for v in p:
+        d += (v - m) * (v - m)
+    return numpy.sqrt(d/ (len(p) - 1))
+
+def std_dev(sample):
+    sample_sum = 0
+    for value in sample:
+        sample_mean += value
+        
+        sample_mean = sample_sum / len(sample)
+        
+        sum_squared_devs = 0
+        for value in sample:
+            sum_squared_devs += (value - sample_mean) * (value - sample_mean)
+            
+        return numpy.sqrt(sum_squared_devs / (len(sample) - 1))
+```
+
+
+```python
+
+```
+
+
 
 ## Analyzing Patient Data
 In this analysis, we looked at inflammation data for multiple patients.
