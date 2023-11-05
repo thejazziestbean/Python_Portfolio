@@ -1,6 +1,125 @@
 # Jazmin_Abreu_Python_Portfolio
 This is the portfolio of the python code from the first pyhton BISC 450C course with Dr. Vandenbrink
 
+## Using Loops
+```python
+odds = [1,3,5,7]
+```
+
+
+```python
+print(odds[0])
+print(odds[1])
+print(odds[2])
+print(odds[3])
+
+```
+
+    1
+    3
+    5
+    7
+
+
+
+```python
+odds = [1,3,5]
+print(odds[0])
+print(odds[1])
+print(odds[2])
+print(odds[3])
+
+```
+
+    1
+    3
+    5
+
+
+
+    ---------------------------------------------------------------------------
+
+    IndexError                                Traceback (most recent call last)
+
+    <ipython-input-3-01ba67d8a9e5> in <module>
+          3 print(odds[1])
+          4 print(odds[2])
+    ----> 5 print(odds[3])
+    
+
+    IndexError: list index out of range
+
+
+
+```python
+odds = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
+
+for num in odds:
+    print(num)
+```
+
+    1
+    3
+    5
+    7
+    9
+    11
+    13
+    15
+    17
+    19
+
+
+
+```python
+length = 0
+names = ['Curie', 'Darwin', 'Turing']
+for value in names:
+    length = length + 1
+print('There are', length, 'names in the list.')
+```
+
+    There are 3 names in the list.
+
+
+
+```python
+name = "Rosalind"
+for name in ['Curie', 'Darwin', 'Turing']:
+    print(name)
+print('after the loop, name is', name)
+```
+
+    Curie
+    Darwin
+    Turing
+    after the loop, name is Turing
+
+
+
+```python
+print(len([0,1,2,3]))
+```
+
+    4
+
+
+
+```python
+name = ['Curie', 'Darwin', 'Turing']
+
+print(len(name))
+```
+
+    3
+
+
+
+```python
+
+```
+
+
 ## Using Multiple Files
 ```python
 import glob
@@ -73,8 +192,81 @@ for filename in filenames:
 
 ```
 
+## Making Choices Part One
+```python
+num = 37
+if num > 100:
+    print('greater')
+else:
+    print('not greater')
+print('done')
+```
 
-## Making Choices
+    not greater
+    done
+
+
+
+```python
+num = 53
+print('before conditional...')
+if num > 100:
+    print(num, 'is greater than 100')
+print('...after conditional')
+```
+
+    before conditional...
+    ...after conditional
+
+
+
+```python
+num = 14
+
+if num > 0:
+    print(num, 'is positive')
+elif num == 0:
+    print(num, 'is zero')
+else:
+    print(num, 'is negative')
+```
+
+    14 is positive
+
+
+
+```python
+if (1 > 0) and (-1 >= 0):
+    print('both parts are true')
+else:
+    print('at lease one part is false')
+```
+
+    at lease one part is false
+
+
+
+```python
+if (1 > 0) or (-1 >= 0):
+    print('at least one part is true')
+else:
+    print('both of these are false')
+```
+
+    at least one part is true
+
+
+
+```python
+import numpy
+```
+
+
+```python
+
+```
+
+## Making Choices Part Two
 ```python
 import numpy
 ```
